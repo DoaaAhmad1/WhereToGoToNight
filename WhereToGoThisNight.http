@@ -1,0 +1,6 @@
+@WhereToGoThisNight_HostAddress = http://localhost:5014
+
+GET {{WhereToGoThisNight_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
