@@ -18,7 +18,7 @@ namespace WhereToGoTonight.Data
 
             // Build DbContext options
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseOracle(connectionString);
 
             return new ApplicationDbContext(optionsBuilder.Options);
         }

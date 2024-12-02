@@ -29,5 +29,7 @@ namespace WhereToGoTonight.Controllers.User
 
             return Ok(result.Data);
         }
+
+
     }
 }

@@ -32,5 +32,14 @@ namespace WhereToGoTonight.Controllers.User
 
             return Ok(new { result.Data });
         }
+        [HttpGet("place/{placeId}/average")]
+        public async Task<IActionResult> GetAverageRatingForPlace(int placeId)
+        {
+            var result = await _ratingsService.GetAverageRatingForPlaceAsync(placeId);
+            if (!result.Succeeded)
+                return BadRequest(new { result.ErrorMessage });
+
+            return Ok(new { averageRating = result.Data });
+        }
     }
 }

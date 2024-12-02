@@ -91,5 +91,6 @@ namespace WhereToGoTonight.Services.Shaired
                 return Result<string>.Failure($"Failed to delete place: {ex.Message}");
             }
         }
-    }
+
+       }
 }

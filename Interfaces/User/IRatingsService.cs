@@ -6,5 +6,7 @@ namespace WhereToGoTonight.Interfaces.User
     public interface IRatingsService
     {
         Task<Result<string>> AddRatingAsync(RatePlaceDto model, string userId);
+        Task<Result<double>> GetAverageRatingForPlaceAsync(int placeId);
+
     }
 }

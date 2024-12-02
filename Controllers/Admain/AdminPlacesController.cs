@@ -20,7 +20,7 @@ namespace WhereToGoTonight.Controllers.Admain
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddPlace([FromBody] CreatePlaceDto model)
         {
             var result = await _placesService.AddPlaceAsync(model);

@@ -4,6 +4,7 @@ using WhereToGoTonight.Models;
 using Microsoft.EntityFrameworkCore;
 using WhereToGoTonight.DTOs.Common;
 using WhereToGoTonight.Interfaces.User;
+using WhereToGoTonight.DTOs.Ratings;
 
 namespace WhereToGoTonight.Services.User
 {
@@ -47,5 +48,21 @@ namespace WhereToGoTonight.Services.User
                 return Result<string>.Failure($"Failed to add rating: {ex.Message}");
             }
         }
+
+        public async Task<Result<double>> GetAverageRatingForPlaceAsync(int placeId)
+        {
+            var averageRating = await _context.Ratings
+                .Where(r => r.PlaceId == placeId)
+                .Select(r => (double?)r.UserRating) // Use nullable to handle no ratings case
+                .AverageAsync();
+
+            if (averageRating == null)
+            {
+                return Result<double>.Failure("No ratings found for this place.");
+            }
+
+            return Result<double>.Success(averageRating.Value);
+        }
+
     }
 }

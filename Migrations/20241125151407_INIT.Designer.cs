@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using WhereToGoTonight.Data;
@@ -11,13 +12,14 @@ using WhereToGoTonight.Data;
 namespace WhereToGoTonight.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241125151407_INIT")]
+    partial class INIT
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("WhereToGoSchema")
                 .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -47,7 +49,7 @@ namespace WhereToGoTonight.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("\"NormalizedName\" IS NOT NULL");
 
-                    b.ToTable("AspNetRoles", "WhereToGoSchema");
+                    b.ToTable("AspNetRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -72,7 +74,7 @@ namespace WhereToGoTonight.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims", "WhereToGoSchema");
+                    b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -97,7 +99,7 @@ namespace WhereToGoTonight.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims", "WhereToGoSchema");
+                    b.ToTable("AspNetUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -119,7 +121,7 @@ namespace WhereToGoTonight.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins", "WhereToGoSchema");
+                    b.ToTable("AspNetUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -134,7 +136,7 @@ namespace WhereToGoTonight.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles", "WhereToGoSchema");
+                    b.ToTable("AspNetUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -153,7 +155,7 @@ namespace WhereToGoTonight.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", "WhereToGoSchema");
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("WhereToGoTonight.Models.ApplicationUser", b =>
@@ -218,7 +220,7 @@ namespace WhereToGoTonight.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("\"NormalizedUserName\" IS NOT NULL");
 
-                    b.ToTable("AspNetUsers", "WhereToGoSchema");
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("WhereToGoTonight.Models.Place", b =>
@@ -258,7 +260,7 @@ namespace WhereToGoTonight.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Places", "WhereToGoSchema");
+                    b.ToTable("Places");
                 });
 
             modelBuilder.Entity("WhereToGoTonight.Models.Rating", b =>
@@ -285,7 +287,7 @@ namespace WhereToGoTonight.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Ratings", "WhereToGoSchema");
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("WhereToGoTonight.Models.UserPreference", b =>
@@ -309,7 +311,7 @@ namespace WhereToGoTonight.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserPreferences", "WhereToGoSchema");
+                    b.ToTable("UserPreferences");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
